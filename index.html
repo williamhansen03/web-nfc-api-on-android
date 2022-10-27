@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#062f55">
+    
+    <link rel="manifest" href="manifest.json">
+    <link rel="icon" href="image/icon72x72.png">
+    <link rel="apple-touch-icon" href="image/icon192x192.png">
+    <title>Web NFC API on android</title>
+</head>
+<body>
+    <h1>
+        Testar hur NFC API till android fungerar.
+    </h1>
+
+    <script>
+
+    if("serviceWorker" in navigator){
+        navigator.serviceWorker.register("sw.js").then(registration => {
+            console.log("SW Registered");
+            console.log(registration);
+        }).catch(error => {
+            console.log("SW Registration Failed!");
+            console.log(error);
+        });
+    }
+
+    </script>
+    <script src="js/scripts.js"></script>
+</body>
+</html>

@@ -1,0 +1,35 @@
+{
+  "name": "Web NFC API on android",
+  "short_name": "Web NFC",
+  "theme_color": "#062f55",
+  "background_color": "#69cdd4",
+  "display": "standalone",
+  "orientation": "portrait",
+  "scope": ".",
+  "start_url": "index.html",
+  "icons": [
+    {
+      "src": "image/icon72x72.png",
+      "sizes": "72x72",
+      "type": "image/png",
+      "purpose": "maskable"
+    },
+    {
+      "src": "image/icon144x144.png",
+      "sizes": "144x144",
+      "type": "image/png"
+    },
+    {
+      "src": "image/icon192x192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "maskable"
+    },
+    {
+      "src": "image/icon.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "maskable"
+    }
+  ]
+}
