@@ -3,20 +3,29 @@
 if ('NDEFReader' in window) {
     const ndef = new NDEFReader();
         //Start scaning for NFC tags
+
         ndef.scan().then(() => {
         console.log("Scan started successfully.");
         
         ndef.onreadingerror = (event) => {
             console.log("Error! Cannot read data from the NFC tag. Try a different one?");
-            document.body.style.backgroundColor = "red";
+            document.body.style.backgroundColor = "#ff0000";
         };
 
         ndef.onreading = (event) => {
             console.log("NDEF message read.");
-            document.body.style.backgroundColor = "green";
+            delay(400).then(() => document.body.style.backgroundColor = "#00ff00");
         };
 
         }).catch((error) => {
         console.log(`Error! Scan failed to start: ${error}.`);
+        document.body.style.backgroundColor = "#ff0000";
     });
+}
+else{
+    document.body.style.backgroundColor = "#0000ff";
+}
+
+function delay(time) {
+    return new Promise(resolve => setTimeout(resolve, time));
 }
