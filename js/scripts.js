@@ -1,11 +1,14 @@
 const color = document.body;
 const text = document.querySelector("h1");
+const nfcText = document.querySelector("p");
 
 
 async function nfcPermission() {
     const nfcPermissionStatus = await navigator.permissions.query({ name: "nfc" });
     return nfcPermissionStatus;
     }
+
+    nfcText.innerHTML = nfcPermission.state;
 
 color.style.backgroundColor = "#000000";
 //Look if the device have NFC
@@ -14,7 +17,7 @@ if ('NDEFReader' in window) {
     text.innerHTML = "Look if the device have NFC";
     const ndef = new NDEFReader();
 
-    console.log(nfcPermission.state);
+    
 
     color.style.backgroundColor = "#ffff00";
     
