@@ -1,6 +1,6 @@
 const color = document.body;
 
-color.style.backgroundColor = "000000";
+color.style.backgroundColor = "#000000";
 //Look if the device have NFC
 if ('NDEFReader' in window) {
     const ndef = new NDEFReader();
