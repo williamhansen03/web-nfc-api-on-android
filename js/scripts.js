@@ -1,52 +1,17 @@
 const color = document.body;
 const text = document.querySelector("h1");
 const nfcText = document.querySelector("p");
+const ndef = new NDEFReader();
 
 
-async function nfcPermission() {
-    const nfcPermissionStatus = await navigator.permissions.query({ name: "nfc" });
-    return nfcPermissionStatus;
-    }
-
-    nfcText.innerHTML = nfcPermission.state;
+nfcText.innerHTML = nfcPermission.state;
 
 color.style.backgroundColor = "#000000";
 //Look if the device have NFC
 
-if ('NDEFReader' in window) {
-    text.innerHTML = "Look if the device have NFC";
-    const ndef = new NDEFReader();
 
+async function startScanning(){
     
-
-    color.style.backgroundColor = "#ffff00";
-    
-    if (nfcPermission.state === "granted") {
-        // NFC access was previously granted, so we can start NFC scanning now.
-        startScanning();
-      } else {
-        // Show a "scan" button.
-        document.querySelector("#scanButton").style.display = "block";
-        document.querySelector("#scanButton").onclick = event => {
-          // Prompt user to allow UA to send and receive info when they tap NFC devices.
-          startScanning();
-        };
-      }
-        //Start scaning for NFC tags
-
-        
-}
-else{
-    text.innerHTML = "No nfc reader or browser does not support NDEFReader";
-    color.style.backgroundColor = "#0000ff";
-}
-
-function delay(time) {
-    return new Promise(resolve => setTimeout(resolve, time));
-}
-
-function startScanning(){
-    const ndef = new NDEFReader();
     ndef.scan().then(() => {
         text.innerHTML = "Scan started successfully.";
         console.log("Scan started successfully.");
@@ -74,3 +39,37 @@ function startScanning(){
         
     });
 }
+
+
+if ('NDEFReader' in window) {
+    text.innerHTML = "Look if the device have NFC";
+    
+
+    const nfcPermissionStatus = await navigator.permissions.query({ name: "nfc" });
+
+    color.style.backgroundColor = "#ffff00";
+    
+    if (nfcPermissionStatus.state === "granted") {
+        // NFC access was previously granted, so we can start NFC scanning now.
+        startScanning();
+      } else {
+        // Show a "scan" button.
+        document.querySelector("#scanButton").style.display = "block";
+        document.querySelector("#scanButton").onclick = event => {
+          // Prompt user to allow UA to send and receive info when they tap NFC devices.
+          startScanning();
+        };
+      }
+        //Start scaning for NFC tags
+
+        
+}
+else{
+    text.innerHTML = "No nfc reader or browser does not support NDEFReader";
+    color.style.backgroundColor = "#0000ff";
+}
+
+function delay(time) {
+    return new Promise(resolve => setTimeout(resolve, time));
+}
+
