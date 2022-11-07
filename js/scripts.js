@@ -1,7 +1,7 @@
 const color = document.body;
 const text = document.querySelector("h1");
 
-const nfcPermissionStatus = await navigator.permissions.query({ name: "nfc" });
+
 
 
 color.style.backgroundColor = "#000000";
@@ -10,6 +10,9 @@ color.style.backgroundColor = "#000000";
 if ('NDEFReader' in window) {
     text.innerHTML = "Look if the device have NFC";
     const ndef = new NDEFReader();
+
+    const nfcPermissionStatus = await navigator.permissions.query({ name: "nfc" });
+
     color.style.backgroundColor = "#ffff00";
     
     if (nfcPermissionStatus.state === "granted") {
@@ -37,6 +40,7 @@ function delay(time) {
 }
 
 function startScanning(){
+    const ndef = new NDEFReader();
     ndef.scan().then(() => {
         text.innerHTML = "Scan started successfully.";
         console.log("Scan started successfully.");
