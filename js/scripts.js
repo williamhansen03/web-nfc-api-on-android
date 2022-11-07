@@ -11,11 +11,14 @@ if ('NDEFReader' in window) {
     text.innerHTML = "Look if the device have NFC";
     const ndef = new NDEFReader();
 
+    async function nfcPermission() {
     const nfcPermissionStatus = await navigator.permissions.query({ name: "nfc" });
+    return nfcPermissionStatus;
+    }
 
     color.style.backgroundColor = "#ffff00";
     
-    if (nfcPermissionStatus.state === "granted") {
+    if (nfcPermission.state === "granted") {
         // NFC access was previously granted, so we can start NFC scanning now.
         startScanning();
       } else {
