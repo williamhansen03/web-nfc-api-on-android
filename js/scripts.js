@@ -1,17 +1,17 @@
 const color = document.body;
 const text = document.querySelector("h1");
 const nfcText = document.querySelector("p");
-const ndef = new NDEFReader();
 
+const nfcPermissionStatus = navigator.permissions.query({ name: "nfc" });
 
-nfcText.innerHTML = nfcPermission.state;
+nfcText.innerHTML = nfcPermissionStatus.state;
 
 color.style.backgroundColor = "#000000";
 //Look if the device have NFC
 
 
-async function startScanning(){
-    
+function startScanning(){
+    const ndef = new NDEFReader();
     ndef.scan().then(() => {
         text.innerHTML = "Scan started successfully.";
         console.log("Scan started successfully.");
@@ -43,9 +43,9 @@ async function startScanning(){
 
 if ('NDEFReader' in window) {
     text.innerHTML = "Look if the device have NFC";
-    
+    const ndef = new NDEFReader();
 
-    const nfcPermissionStatus = await navigator.permissions.query({ name: "nfc" });
+    
 
     color.style.backgroundColor = "#ffff00";
     
