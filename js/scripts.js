@@ -27,6 +27,8 @@ function startScanning(){
         });
 
         ndef.addEventListener("reading", ({ message, serialNumber }) => {
+            const info = document.querySelector("h2");
+            info.innerHTML = message;
             text.innerHTML = "NDEF message read.";
             console.log("NDEF message read.");
             delay(400).then(() => color.style.backgroundColor = "#00ff00");
