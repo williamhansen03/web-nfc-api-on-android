@@ -19,19 +19,19 @@ function startScanning(){
         color.style.backgroundColor = "#A020F0";
         
         
-        ndef.onreadingerror = (event) => {
+        ndef.addEventListener("readingerror", () => {
             text.innerHTML = "Error! Cannot read data from the NFC tag. Try a different one?";
             console.log("Error! Cannot read data from the NFC tag. Try a different one?");
             color.style.backgroundColor = "#ff0000";
             
-        };
+        });
 
-        ndef.onreading = (event) => {
+        ndef.addEventListener("reading", ({ message, serialNumber }) => {
             text.innerHTML = "NDEF message read.";
             console.log("NDEF message read.");
             delay(400).then(() => color.style.backgroundColor = "#00ff00");
             
-        };
+        });
 
         }).catch((error) => {
         text.innerHTML = `Error! Scan failed to start: ${error}.`;
@@ -53,7 +53,7 @@ if ('NDEFReader' in window) {
     if (nfcPermissionStatus.state === "granted") {
         // NFC access was previously granted, so we can start NFC scanning now.
         startScanning();
-        
+
       } else {
         // Show a "scan" button.
         document.querySelector("#scanButton").style.display = "block";
