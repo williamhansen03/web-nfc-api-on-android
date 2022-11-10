@@ -7,11 +7,12 @@ const nfcPermissionStatus = navigator.permissions.query({ name: "nfc" });
 nfcText.innerHTML = nfcPermissionStatus.state;
 
 color.style.backgroundColor = "#000000";
+
+
 //Look if the device have NFC
-
-
 function startScanning(){
     const ndef = new NDEFReader();
+
     ndef.scan().then(() => {
         text.innerHTML = "Scan started successfully.";
         console.log("Scan started successfully.");
@@ -52,6 +53,7 @@ if ('NDEFReader' in window) {
     if (nfcPermissionStatus.state === "granted") {
         // NFC access was previously granted, so we can start NFC scanning now.
         startScanning();
+        
       } else {
         // Show a "scan" button.
         document.querySelector("#scanButton").style.display = "block";
