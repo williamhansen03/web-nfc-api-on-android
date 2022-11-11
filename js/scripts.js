@@ -1,4 +1,4 @@
-const color = document.body;
+/*const color = document.body;
 color.style.backgroundColor = "#000000";
 
 const text = document.querySelector("h1");
@@ -75,4 +75,6 @@ else{
 function delay(time) {
     return new Promise(resolve => setTimeout(resolve, time));
 }
-
+*/
+let j = document.querySelector("h1");
+j.innerHTML = "hej";
