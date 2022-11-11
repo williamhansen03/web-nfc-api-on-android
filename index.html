@@ -34,10 +34,12 @@
     <script>
         document.body.style.backgroundColor = "#00FFFF";
     if("serviceWorker" in navigator){
+        document.body.style.backgroundColor = "#555555";
         navigator.serviceWorker.register("sw.js").then(registration => {
             console.log("SW Registered");
             console.log(registration);
         }).catch(error => {
+            document.body.style.backgroundColor = "#FF69B4";
             console.log("SW Registration Failed!");
             console.log(error);
         });
