@@ -13,34 +13,33 @@ color.style.backgroundColor = "#000000";
 function startScanning(){
     const ndef = new NDEFReader();
 
-    ndef.scan().then(() => {
-        text.innerHTML = "Scan started successfully.";
-        console.log("Scan started successfully.");
-        color.style.backgroundColor = "#A020F0";
+    while(true){
+
+        ndef.scan().then(() => {
+            text.innerHTML = "Scan started successfully.";
+            console.log("Scan started successfully.");
+            color.style.backgroundColor = "#A020F0";
         
-        
-        ndef.addEventListener("readingerror", () => {
-            text.innerHTML = "Error! Cannot read data from the NFC tag. Try a different one?";
-            console.log("Error! Cannot read data from the NFC tag. Try a different one?");
+            ndef.addEventListener("readingerror", () => {
+                text.innerHTML = "Error! Cannot read data from the NFC tag. Try a different one?";
+                console.log("Error! Cannot read data from the NFC tag. Try a different one?");
+                color.style.backgroundColor = "#ff0000";
+            });
+
+            ndef.addEventListener("reading", ({ message, serialNumber }) => {
+                const info = document.querySelector("h2");
+                info.innerHTML = message + ", " + serialNumber;
+                text.innerHTML = "NDEF message read.";
+                console.log("NDEF message read.");
+                delay(400).then(() => color.style.backgroundColor = "#00ff00");
+            });
+
+            }).catch((error) => {
+            text.innerHTML = `Error! Scan failed to start: ${error}.`;
+            console.log(`Error! Scan failed to start: ${error}.`);
             color.style.backgroundColor = "#ff0000";
-            
         });
-
-        ndef.addEventListener("reading", ({ message, serialNumber }) => {
-            const info = document.querySelector("h2");
-            info.innerHTML = message + ", " + serialNumber;
-            text.innerHTML = "NDEF message read.";
-            console.log("NDEF message read.");
-            delay(400).then(() => color.style.backgroundColor = "#00ff00");
-            
-        });
-
-        }).catch((error) => {
-        text.innerHTML = `Error! Scan failed to start: ${error}.`;
-        console.log(`Error! Scan failed to start: ${error}.`);
-        color.style.backgroundColor = "#ff0000";
-        
-    });
+    }
 }
 
 
