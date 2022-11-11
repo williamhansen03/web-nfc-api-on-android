@@ -13,7 +13,7 @@ nfcText.innerHTML = nfcPermissionStatus;
 function startScanning(){
     const ndef = new NDEFReader();
 
-    while(true){
+    
 
         ndef.scan().then(() => {
             text.innerHTML = "Scan started successfully.";
@@ -39,7 +39,7 @@ function startScanning(){
             console.log(`Error! Scan failed to start: ${error}.`);
             color.style.backgroundColor = "#ff0000";
         });
-    }
+    
 }
 
 
