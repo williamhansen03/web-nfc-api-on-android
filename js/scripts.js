@@ -4,7 +4,7 @@ color.style.backgroundColor = "#000000";
 const text = document.querySelector("h1");
 const nfcText = document.querySelector("p");
 
-const nfcPermissionStatus = "granted"//navigator.permissions.query({ name: "nfc" });
+const nfcPermissionStatus = "hej"//navigator.permissions.query({ name: "nfc" });
 
 nfcText.innerHTML = nfcPermissionStatus;
 
