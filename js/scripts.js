@@ -1,12 +1,12 @@
 const color = document.body;
+color.style.backgroundColor = "#000000";
+
 const text = document.querySelector("h1");
 const nfcText = document.querySelector("p");
 
 const nfcPermissionStatus = navigator.permissions.query({ name: "nfc" });
 
 nfcText.innerHTML = nfcPermissionStatus.state;
-
-color.style.backgroundColor = "#000000";
 
 
 //Look if the device have NFC
