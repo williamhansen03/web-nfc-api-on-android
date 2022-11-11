@@ -58,11 +58,11 @@ if ('NDEFReader' in window) {
 
       } else {
         // Show a "scan" button.
-        document.querySelector("#scanButton").style.display = "block";
-        document.querySelector("#scanButton").onclick = event => {
+        //document.querySelector("#scanButton").style.display = "block";
+        //document.querySelector("#scanButton").onclick = event => {
           // Prompt user to allow UA to send and receive info when they tap NFC devices.
           startScanning();
-        };
+        //};
       }
         //Start scaning for NFC tags
 
