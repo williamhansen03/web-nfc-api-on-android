@@ -13,7 +13,7 @@ nfcText.innerHTML = nfcPermissionStatus;
 function startScanning(){
     const ndef = new NDEFReader();
 
-    
+    while(true){
 
         ndef.scan().then(() => {
             text.innerHTML = "Scan started successfully.";
@@ -39,7 +39,7 @@ function startScanning(){
             console.log(`Error! Scan failed to start: ${error}.`);
             color.style.backgroundColor = "#ff0000";
         });
-    
+    }
 }
 
 
@@ -57,11 +57,11 @@ if ('NDEFReader' in window) {
 
       } else {
         // Show a "scan" button.
-        //document.querySelector("#scanButton").style.display = "block";
-        //document.querySelector("#scanButton").onclick = event => {
+        document.querySelector("#scanButton").style.display = "block";
+        document.querySelector("#scanButton").onclick = event => {
           // Prompt user to allow UA to send and receive info when they tap NFC devices.
           startScanning();
-        //};
+        };
       }
         //Start scaning for NFC tags
 
