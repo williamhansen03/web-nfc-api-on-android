@@ -45,7 +45,7 @@ function startScanning(){
 
 if ('NDEFReader' in window) {
     text.innerHTML = "Look if the device have NFC";
-    const ndef = new NDEFReader();
+    
 
     
 
