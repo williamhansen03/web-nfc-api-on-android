@@ -55,9 +55,9 @@ if ('NDEFReader' in window) {
         document.querySelector("#scanButton").style.display = "block";
         document.querySelector("#scanButton").onclick = event => {
           // Prompt user to allow UA to send and receive info when they tap NFC devices.
-          while(true){
+          
             startScanning();
-          }
+          
           
         };
       }
