@@ -38,7 +38,7 @@ if ('NDEFReader' in window) {
     color.style.backgroundColor = "#ffff00";
 
     while(true){
-
+        color.style.backgroundColor = "#00FFFF";
     navigator.permissions.query({name:'nfc'}).then((result) => {
         if (result.state === 'granted') {
           startScanning();
