@@ -74,7 +74,7 @@ if ('NDEFReader' in window) {
       }*/
         //Start scaning for NFC tags
 
-        nfcText.innerHTML = navigator.permissions.query({name:'nfc'});
+        nfcText.innerHTML = navigator.permissions.query({name:'nfc'}).state;
 }
 else{
     text.innerHTML = "No nfc reader or browser does not support NDEFReader";
