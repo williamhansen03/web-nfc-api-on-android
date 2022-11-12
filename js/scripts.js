@@ -17,20 +17,20 @@ function startScanning(){
         ndef.addEventListener("readingerror", () => {
             text.innerHTML = "Error! Cannot read data from the NFC tag. Try a different one?";
             color.style.backgroundColor = "#ff0000";
-            startScanning();
+            delay(400).then(() => startScanning());
         });
 
         ndef.addEventListener("reading", ({ message, serialNumber }) => {
             info.innerHTML = message + ", " + serialNumber;
             text.innerHTML = "NDEF message read.";
             delay(400).then(() => color.style.backgroundColor = "#00ff00");
-            startScanning();
+            delay(400).then(() => startScanning());
         });
 
         }).catch((error) => {
         text.innerHTML = `Error! Scan failed to start: ${error}.`;
         color.style.backgroundColor = "#ff0000";
-        startScanning();
+        delay(400).then(() => startScanning());
     });
     
 }
