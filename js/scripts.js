@@ -41,6 +41,11 @@ if ('NDEFReader' in window) {
 
     color.style.backgroundColor = "#ffff00";
 
+
+    //https://developer.mozilla.org/en-US/docs/Web/API/WorkerNavigator/permissions
+    //https://whatwebcando.today/permissions.html
+    //https://developer.mozilla.org/en-US/docs/Web/API/Permissions/query
+
     navigator.permissions.query({name:'nfc'}).then((result) => {
         if (result.state === 'granted') {
           startScanning();
@@ -49,7 +54,7 @@ if ('NDEFReader' in window) {
             document.querySelector("#scanButton").style.display = "block";
             document.querySelector("#scanButton").onclick = event => {
             // Prompt user to allow UA to send and receive info when they tap NFC devices.
-          
+            nfcText.innerHTML = result.state;
             startScanning();
           
           
