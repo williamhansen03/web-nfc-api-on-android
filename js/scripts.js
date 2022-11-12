@@ -36,26 +36,29 @@ if ('NDEFReader' in window) {
     text.innerHTML = "Look if the device have NFC";
 
     color.style.backgroundColor = "#ffff00";
-    while(ture){
+
+    while(true){
+
     navigator.permissions.query({name:'nfc'}).then((result) => {
         if (result.state === 'granted') {
           startScanning();
         } else if (result.state === 'prompt') {
             // Show a "scan" button.
             document.querySelector("#scanButton").style.display = "block";
-            ndef.addEventListener("onLoad", () =>{//document.querySelector("#scanButton").onclick = event => {
+            document.querySelector("#scanButton").onclick = event => {
             // Prompt user to allow UA to send and receive info when they tap NFC devices.
           
             startScanning();
           
           
-        });
+            };
         }
       });
-    }
+    
     //Start scaning for NFC tags
 
     nfcText.innerHTML = navigator.permissions.query({name:'nfc'}).state;
+    }
 }
 else{
     text.innerHTML = "No nfc reader or browser does not support NDEFReader";
