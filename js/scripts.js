@@ -5,7 +5,6 @@ const text = document.querySelector("h1");
 const info = document.querySelector("h2");
 const nfcText = document.querySelector("p");
 
-//Look if the device have NFC
 function startScanning(){
     const ndef = new NDEFReader();
     color.style.backgroundColor = "#00FFFF";
@@ -35,7 +34,7 @@ function startScanning(){
     
 }
 
-
+//Look if the device have NFC
 if ('NDEFReader' in window) {
     text.innerHTML = "Look if the device have NFC";
 
@@ -46,6 +45,7 @@ if ('NDEFReader' in window) {
     //https://whatwebcando.today/permissions.html
     //https://developer.mozilla.org/en-US/docs/Web/API/Permissions/query
 
+    //Look if have permissions for a nfc is granted or not if not 
     navigator.permissions.query({name:'nfc'}).then((result) => {
         if (result.state === 'granted') {
           startScanning();
