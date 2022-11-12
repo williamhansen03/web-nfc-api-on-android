@@ -8,6 +8,7 @@ const nfcText = document.querySelector("p");
 //Look if the device have NFC
 function startScanning(){
     const ndef = new NDEFReader();
+    color.style.backgroundColor = "#00FFFF";
 
     ndef.scan().then(() => {
         text.innerHTML = "Scan started successfully.";
@@ -16,12 +17,14 @@ function startScanning(){
         ndef.addEventListener("readingerror", () => {
             text.innerHTML = "Error! Cannot read data from the NFC tag. Try a different one?";
             color.style.backgroundColor = "#ff0000";
+            startScanning();
         });
 
         ndef.addEventListener("reading", ({ message, serialNumber }) => {
             info.innerHTML = message + ", " + serialNumber;
             text.innerHTML = "NDEF message read.";
             delay(400).then(() => color.style.backgroundColor = "#00ff00");
+            startScanning();
         });
 
         }).catch((error) => {
@@ -37,8 +40,6 @@ if ('NDEFReader' in window) {
 
     color.style.backgroundColor = "#ffff00";
 
-    while(true){
-        color.style.backgroundColor = "#00FFFF";
     navigator.permissions.query({name:'nfc'}).then((result) => {
         if (result.state === 'granted') {
           startScanning();
@@ -58,7 +59,7 @@ if ('NDEFReader' in window) {
     //Start scaning for NFC tags
 
     nfcText.innerHTML = navigator.permissions.query({name:'nfc'}).state;
-    }
+    
 }
 else{
     text.innerHTML = "No nfc reader or browser does not support NDEFReader";
