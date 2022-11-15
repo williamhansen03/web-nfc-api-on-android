@@ -37,18 +37,92 @@
     <script>
     //document.body.style.backgroundColor = "#00FFFF";
     if("serviceWorker" in navigator){
-        document.body.style.backgroundColor = "#555555";
-        navigator.serviceWorker.register("sw.js").then(registration => {            
-            console.log("SW Registered");
+        if('NDEFReader' in window){
+
+            navigator.permissions.query({name:'nfc'}).then((result) => {
+            if (result.state === 'granted') {
+                document.body.style.backgroundColor = "black";
+                
+                
+                navigator.serviceWorker.register("sw.js").then(registration => {            
+                    console.log("SW Registered");
+                    console.log(registration);
+                }).catch(error => {
+            
+                    console.log("SW Registration Failed!");
+                    console.log(error);
+                });
+
+
+            } else if (result.state === 'prompt') {
+                // Show a scan button.
+                document.querySelector("#scanButton").style.display = "block";
+                document.querySelector("#scanButton").onclick = event => {
+                // Prompt user to allow to send and receive info when they tap NFC devices.
+                document.querySelector("#scanButton").style.display = "none";
+
+                document.body.style.backgroundColor = "#fff";
+                navigator.serviceWorker.register("sw.js").then(registration => {            
+                    console.log("SW Registered");
+                    console.log(registration);
+                }).catch(error => {
+            
+                    console.log("SW Registration Failed!");
+                    console.log(error);
+                });
+
+            };
+        }
+  });
+        }else {
+            // If device have no nfc reader or browser does not support NDEFReader
+            document.body.style.backgroundColor = "#0000ff";
+        }
+        
+    }
+/*
+    if ('NDEFReader' in window) {
+
+// Look if have permissions for a nfc is granted or not if permissions is not granded make a button that give browser permissions for nfc
+navigator.permissions.query({name:'nfc'}).then((result) => {
+    if (result.state === 'granted') {
+          body.style.backgroundColor = "black";
+
+          navigator.serviceWorker.register("sw.js").then(registration => {            
+            console.log("nfc Registered");
             console.log(registration);
         }).catch(error => {
             
-            console.log("SW Registration Failed!");
+            console.log("nfc Registration Failed!");
             console.log(error);
         });
+
+    } else if (result.state === 'prompt') {
+        // Show a scan button.
+        document.querySelector("#scanButton").style.display = "block";
+        document.querySelector("#scanButton").onclick = event => {
+        // Prompt user to allow to send and receive info when they tap NFC devices.
+        document.querySelector("#scanButton").style.display = "none";
+        navigator.serviceWorker.register("sw.js").then(registration => {            
+            console.log("nfc Registered");
+            console.log(registration);
+        }).catch(error => {
+            
+            console.log("nfc Registration Failed!");
+            console.log(error);
+        });
+
+        };
     }
+  });
+
+}
+else{
+// If device have no nfc reader or browser does not support NDEFReader
+document.body.style.backgroundColor = "#0000ff";
+}*/
 
     </script>
-    <script src="js/scripts.js"></script>
+    <!--<script src="js/scripts.js"></script>-->
 </body>
 </html>
