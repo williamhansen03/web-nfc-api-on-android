@@ -19,6 +19,11 @@ self.addEventListener("fetch", e => {
 });
 
 self.addEventListener("activate", event => {
+
+    const color = document.body;
+
+const text = document.querySelector("h1");
+const info = document.querySelector("h2");
 // Get refercens to nfc reader
 const ndef = new NDEFReader();
 color.style.backgroundColor = "#00FFFF";
