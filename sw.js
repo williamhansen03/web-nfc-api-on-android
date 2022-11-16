@@ -18,7 +18,7 @@ self.addEventListener("fetch", e => {
     console.log("Intercepting fetch request for: ${e.request.url}");
 });
 
-self.addEventListener("activate", event => {
+/*self.addEventListener("activate", event => {
 
     const color = document.body;
 
@@ -53,5 +53,5 @@ ndef.scan().then(() => {
 });
 
 	
-});
+});*/
 
