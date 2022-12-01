@@ -2,6 +2,7 @@ const color = document.body;
 
 const text = document.querySelector("h1");
 const info = document.querySelector("h2");
+const p = document.querySelector("p");
 
 // Kod ska till service worker 
 
@@ -43,7 +44,6 @@ const inputButton = document.querySelector(".inputButton");
 
 function inputFunction(){
     const input = document.querySelector("#write");
-    const p = document.querySelector("p");
     color.style.backgroundColor = "white";
     text.style.color = "black";
     info.style.color = "black";
