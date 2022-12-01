@@ -3,6 +3,8 @@ const color = document.body;
 const text = document.querySelector("h1");
 const info = document.querySelector("h2");
 
+let message = "";
+
 // Kod ska till service worker 
 
 // Function scan after a nfc tag
@@ -97,9 +99,15 @@ function delay(time) {
 }
 
 function writeFunction(){
-    const ndef = new NDEFReader();
 
-    ndef.write("Hello world").then(() => {
+    const messageButton = document.querySelector(".messageButton");
+    messageButton.addEventListener("click", function(){
+        const input = document.querySelector("#message");
+        message = input.value;
+    });
+    const ndef = new NDEFReader();
+    info.innerHTML = message;
+    ndef.write(message).then(() => {
         text.innerHTML = "Message written.";
 
     }).catch(error => {
