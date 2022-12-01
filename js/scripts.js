@@ -96,7 +96,7 @@ function delay(time) {
     return new Promise(resolve => setTimeout(resolve, time));
 }
 
-async function writeFunction(){
+function writeFunction(){
     const ndef = new NDEFReader();
 
     ndef.write("Hello world").then(() => {
