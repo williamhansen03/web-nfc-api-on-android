@@ -97,21 +97,13 @@ function delay(time) {
 }
 
 async function writeFunction(){
-    /*
     const ndef = new NDEFReader();
 
-    ndef.write({records: [{ recordType: "url", data: "https://w3c.github.io/web-nfc/" }]}).then(() => {
-        text.innerHTML = "Message written.";
+    ndef.write("Hello world").then(() => {
+        p.innerHTML = "Message written.";
 
     }).catch(error => {
-        text.innerHTML = `Write failed :-( try again: ${error}.`;
+        p.innerHTML = `Write failed :-( try again: ${error}.`;
 
-    });*/
-    const ndef = new NDEFReader();
-    try {
-        await ndef.write("Hello world");
-        p.innerHTML = "Message written.";
-    } catch (error) {
-        p.innerHTML = `Operation failed: ${error}`;
-    }
+    });
 }
