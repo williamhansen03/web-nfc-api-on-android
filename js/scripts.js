@@ -100,10 +100,10 @@ function writeFunction(){
     const ndef = new NDEFReader();
 
     ndef.write("Hello world").then(() => {
-        p.innerHTML = "Message written.";
+        text.innerHTML = "Message written.";
 
     }).catch(error => {
-        p.innerHTML = `Write failed :-( try again: ${error}.`;
+        text.innerHTML = `Write failed :-( try again: ${error}.`;
 
     });
 }
