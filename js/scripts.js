@@ -99,7 +99,7 @@ function delay(time) {
 function writeFunction(){
     const ndef = new NDEFReader();
 
-    ndef.write("1").then(() => {
+    ndef.write({records: [{ recordType: "url", data: "https://w3c.github.io/web-nfc/" }]}).then(() => {
         text.innerHTML = "Message written.";
 
     }).catch(error => {
