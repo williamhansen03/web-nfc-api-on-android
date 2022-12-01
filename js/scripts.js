@@ -103,7 +103,7 @@ function writeFunction(){
         text.innerHTML = "Message written.";
 
     }).catch(error => {
-        text.innerHTML = `Write failed :-( try again: ${error}.`;
+        text.innerHTML = `Write failed. try again: ${error}.`;
 
     });
 }
