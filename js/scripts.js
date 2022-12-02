@@ -102,11 +102,11 @@ const messageButton = document.querySelector(".messageButton");
     messageButton.addEventListener("click", function(){
         const input = document.querySelector("#message");
         info.innerHTML = input.value;
+        const p = document.querySelector("p");
+        p.innerHTML = typeof input;
     });
     message = info.value;
-    const p = document.querySelector("p");
-    p.innerHTML = typeof message;
-    
+
 function writeFunction(){
     const ndef = new NDEFReader();
     ndef.write("message").then(() => {
