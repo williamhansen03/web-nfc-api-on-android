@@ -105,9 +105,9 @@ function writeFunction(){
         const input = document.querySelector("#message");
         info.innerHTML = input.value;
     });
-    color.style.backgroundColor = "yellow";
     const ndef = new NDEFReader();
-    ndef.write(info.value).then(() => {
+    message = info.value
+    ndef.write(message).then(() => {
         text.innerHTML = "Message written.";
 
     }).catch(error => {
