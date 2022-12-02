@@ -103,9 +103,9 @@ function writeFunction(){
     const messageButton = document.querySelector(".messageButton");
     messageButton.addEventListener("click", function(){
         const input = document.querySelector("#message");
-        message = input.value;
-        info.innerHTML = message;
+        info.innerHTML = input.value;
     });
+    color.style.backgroundColor = "yellow";
     const ndef = new NDEFReader();
     ndef.write(info.value).then(() => {
         text.innerHTML = "Message written.";
