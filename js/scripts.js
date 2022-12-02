@@ -107,9 +107,7 @@ function writeFunction(){
         info.innerHTML = message;
     });
     const ndef = new NDEFReader();
-    ndef.write({
-        records: [{ recordType: "url", data: "https://w3c.github.io/web-nfc/" }]
-      }/*info.value*/).then(() => {
+    ndef.write(info.value).then(() => {
         text.innerHTML = "Message written.";
 
     }).catch(error => {
