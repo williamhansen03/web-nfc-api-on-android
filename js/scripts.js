@@ -103,8 +103,10 @@ const messageButton = document.querySelector(".messageButton");
         const input = document.querySelector("#message");
         info.innerHTML = input.value;
     });
-    message = info.value
-
+    message = info.value;
+    const p = document.querySelector("p");
+    p.innerHTML = typeof message;
+    
 function writeFunction(){
     const ndef = new NDEFReader();
     ndef.write("message").then(() => {
