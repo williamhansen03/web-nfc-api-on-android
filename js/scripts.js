@@ -98,16 +98,16 @@ function delay(time) {
     return new Promise(resolve => setTimeout(resolve, time));
 }
 
-function writeFunction(){
-
-    const messageButton = document.querySelector(".messageButton");
+const messageButton = document.querySelector(".messageButton");
     messageButton.addEventListener("click", function(){
         const input = document.querySelector("#message");
         info.innerHTML = input.value;
     });
-    const ndef = new NDEFReader();
     message = info.value
-    ndef.write(message).then(() => {
+
+function writeFunction(){
+    const ndef = new NDEFReader();
+    ndef.write("message").then(() => {
         text.innerHTML = "Message written.";
 
     }).catch(error => {
