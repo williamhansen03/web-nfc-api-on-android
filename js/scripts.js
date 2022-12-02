@@ -109,7 +109,7 @@ const messageButton = document.querySelector(".messageButton");
 
 function writeFunction(){
     const ndef = new NDEFReader();
-    ndef.write("message").then(() => {
+    ndef.write(message.toString).then(() => {
         text.innerHTML = "Message written.";
 
     }).catch(error => {
